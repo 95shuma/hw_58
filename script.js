@@ -36,9 +36,15 @@ function createCommentElement(comment) {
 	let elem = document.createElement(`div`);
 	elem.innerHTML = `<a href="#" class="muted">${comment.userId}</a>
 	<p>${comment.text}</p>`;
-	var att = document.createAttribute("class");
+	let att = document.createAttribute("class");
 	att.value = "py-2 pl-3";
 	elem.setAttributeNode(att);
+	return elem;
+}
+
+let commentElement = createCommentElement(comment);
+
+function addCommentElement(elem) {
 	document.getElementById("comment").appendChild(elem);
 }
 
@@ -94,5 +100,11 @@ function createPostElement(post) {
 	let att = document.createAttribute("class");
 	att.value = "card my-3";
 	elem.setAttributeNode(att);
+	return elem;
+}
+
+let postElement = createPostElement(post);
+
+function addPostElement(elem) {
 	document.getElementById("posts").appendChild(elem);
 }
