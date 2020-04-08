@@ -49,52 +49,6 @@ function addCommentElement(elem) {
 }
 
 
-
-window.addEventListener('load',function () {
-    let like = document.getElementsByClassName("like")[0];
-    like.addEventListener('click', function () {
-        if(like.classList.contains("muted")){
-            like.classList.remove("muted");
-            like.classList.add("text-danger");
-            like.children[0].classList.remove("far");
-            like.children[0].classList.add("fas");
-        } else {
-            like.classList.remove("text-danger");
-            like.classList.add("muted");
-            like.children[0].classList.remove("fas");
-            like.children[0].classList.add("far");
-        }
-    });
-
-    let img = document.getElementsByClassName("img")[0];
-    img.addEventListener('dblclick', function (){
-        if(like.classList.contains("muted")){
-            like.classList.remove("muted");
-            like.classList.add("text-danger");
-            like.children[0].classList.remove("far");
-            like.children[0].classList.add("fas");
-        } else {
-            like.classList.remove("text-danger");
-            like.classList.add("muted");
-            like.children[0].classList.remove("fas");
-            like.children[0].classList.add("far");
-        }
-    });
-
-    let bookmark = document.getElementsByClassName("bookmark");
-    for (let i=0; i<bookmark.length;i++) {
-        bookmark[i].addEventListener('click', function () {
-            if (bookmark[i].children[0].classList.contains("far")) {
-                bookmark[i].children[0].classList.remove("far");
-                bookmark[i].children[0].classList.add("fas");
-            } else {
-                bookmark[i].children[0].classList.remove("fas");
-                bookmark[i].children[0].classList.add("far");
-            }
-        });
-    }
-});
-
 function createPostElement(post) {
     let elem = document.createElement(`div`);
     elem.innerHTML = `
@@ -155,3 +109,48 @@ let postElement = createPostElement(post);
 function addPostElement(elem) {
     document.getElementById("posts").appendChild(elem);
 };
+
+window.addEventListener('load',function () {
+    let like = document.getElementsByClassName("like")[0];
+    like.addEventListener('click', function () {
+        if(like.classList.contains("muted")){
+            like.classList.remove("muted");
+            like.classList.add("text-danger");
+            like.children[0].classList.remove("far");
+            like.children[0].classList.add("fas");
+        } else {
+            like.classList.remove("text-danger");
+            like.classList.add("muted");
+            like.children[0].classList.remove("fas");
+            like.children[0].classList.add("far");
+        }
+    });
+
+    let img = document.getElementsByClassName("img")[0];
+    img.addEventListener('dblclick', function (){
+        if(like.classList.contains("muted")){
+            like.classList.remove("muted");
+            like.classList.add("text-danger");
+            like.children[0].classList.remove("far");
+            like.children[0].classList.add("fas");
+        } else {
+            like.classList.remove("text-danger");
+            like.classList.add("muted");
+            like.children[0].classList.remove("fas");
+            like.children[0].classList.add("far");
+        }
+    });
+
+    let bookmark = document.getElementsByClassName("bookmark");
+    for (let i=0; i<bookmark.length;i++) {
+        bookmark[i].addEventListener('click', function () {
+            if (bookmark[i].children[0].classList.contains("far")) {
+                bookmark[i].children[0].classList.remove("far");
+                bookmark[i].children[0].classList.add("fas");
+            } else {
+                bookmark[i].children[0].classList.remove("fas");
+                bookmark[i].children[0].classList.add("far");
+            }
+        });
+    }
+});
