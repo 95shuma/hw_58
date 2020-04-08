@@ -58,20 +58,20 @@ function createPostElement(post) {
           <!-- image block end -->
           <div class="px-4 py-3">
             <!-- post reactions block start -->
-            <div class="d-flex justify-content-around">
+            <!--<div class="d-flex justify-content-around">
               <span class="h1 mx-2 text-danger">
                 <i class="fas fa-heart"></i>
-              </span>
-              <span class="h1 mx-2 muted">
+              </span>-->
+              <span class="h1 mx-2 muted like">
                 <i class="far fa-heart"></i>
               </span>
               <span class="h1 mx-2 muted">
                 <i class="far fa-comment"></i>
               </span>
               <span class="mx-auto"></span>
-              <span class="h1 mx-2 muted">
+              <!--<span class="h1 mx-2 muted">
                 <i class="far fa-bookmark"></i>
-              </span>
+              </span>-->
               <span class="h1 mx-2 muted">
                 <i class="fas fa-bookmark"></i>
               </span>
@@ -107,4 +107,47 @@ let postElement = createPostElement(post);
 
 function addPostElement(elem) {
 	document.getElementById("posts").appendChild(elem);
-}
+};
+
+window.addEventListener('load',function () {
+    let like = document.getElementsByClassName("like")[0];
+    like.addEventListener('click', function () {
+        if(like.classList.contains("muted")){
+            like.classList.remove("muted");
+            like.classList.add("text-danger");
+            like.children[0].classList.remove("far");
+            like.children[0].classList.add("fas");
+        } else {
+            like.classList.remove("text-danger");
+            like.classList.add("muted");
+            like.children[0].classList.remove("fas");
+            like.children[0].classList.add("far");
+        }
+    });
+
+    let img = document.getElementsByClassName("img")[0];
+    img.addEventListener('dblclick', function (){
+        if(like.classList.contains("muted")){
+            like.classList.remove("muted");
+            like.classList.add("text-danger");
+            like.children[0].classList.remove("far");
+            like.children[0].classList.add("fas");
+        } else {
+            like.classList.remove("text-danger");
+            like.classList.add("muted");
+            like.children[0].classList.remove("fas");
+            like.children[0].classList.add("far");
+        }
+    });
+
+    let bookmark = document.getElementsByClassName("bookmark")[0];
+    bookmark.addEventListener('click',function () {
+        if(bookmark.children[0].classList.contains("far")){
+            bookmark.children[0].classList.remove("far");
+            bookmark.children[0].classList.add("fas");
+        } else {
+            bookmark.children[0].classList.remove("fas");
+            bookmark.children[0].classList.add("far");
+        }
+    });
+});
