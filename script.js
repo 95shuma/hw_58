@@ -30,6 +30,7 @@ function showSplashScreen() {
 function hideSplashScreen() {
 	document.getElementById("page-splash").hidden = true;
 	document.body.classList.remove("no-scroll");
+	view();
 }
 
 function createCommentElement(comment) {
@@ -54,7 +55,7 @@ function createPostElement(post) {
     elem.innerHTML = `
           <!-- image block start -->
           <div>
-            <img class="d-block w-100" src="${post.imageURL}" alt="Post image">
+            <img class="d-block w-100 img" src="${post.imageURL}" alt="Post image">
           </div>
           <!-- image block end -->
           <div class="px-4 py-3">
@@ -110,36 +111,45 @@ function addPostElement(elem) {
     document.getElementById("posts").appendChild(elem);
 };
 
-window.addEventListener('load',function () {
-    let like = document.getElementsByClassName("like")[0];
-    like.addEventListener('click', function () {
-        if(like.classList.contains("muted")){
-            like.classList.remove("muted");
-            like.classList.add("text-danger");
-            like.children[0].classList.remove("far");
-            like.children[0].classList.add("fas");
-        } else {
-            like.classList.remove("text-danger");
-            like.classList.add("muted");
-            like.children[0].classList.remove("fas");
-            like.children[0].classList.add("far");
-        }
-    });
+/*window.addEventListener('load',function () {
+    view();
+});*/
 
-    let img = document.getElementsByClassName("img")[0];
-    img.addEventListener('dblclick', function (){
-        if(like.classList.contains("muted")){
-            like.classList.remove("muted");
-            like.classList.add("text-danger");
-            like.children[0].classList.remove("far");
-            like.children[0].classList.add("fas");
-        } else {
-            like.classList.remove("text-danger");
-            like.classList.add("muted");
-            like.children[0].classList.remove("fas");
-            like.children[0].classList.add("far");
-        }
-    });
+function view(){
+    let like = document.getElementsByClassName("like");
+    for (let i=0; i<like.length;i++){
+        like[i].addEventListener('click', function () {
+            if(like[i].classList.contains("muted")){
+                like[i].classList.remove("muted");
+                like[i].classList.add("text-danger");
+                like[i].children[0].classList.remove("far");
+                like[i].children[0].classList.add("fas");
+            } else {
+                like[i].classList.remove("text-danger");
+                like[i].classList.add("muted");
+                like[i].children[0].classList.remove("fas");
+                like[i].children[0].classList.add("far");
+            }
+        });
+    }
+
+
+    let img = document.getElementsByClassName("img");
+    for (let i=0;i<img.length;i++){
+        img[i].addEventListener('dblclick', function (){
+            if(like[i].classList.contains("muted")){
+                like[i].classList.remove("muted");
+                like[i].classList.add("text-danger");
+                like[i].children[0].classList.remove("far");
+                like[i].children[0].classList.add("fas");
+            } else {
+                like[i].classList.remove("text-danger");
+                like[i].classList.add("muted");
+                like[i].children[0].classList.remove("fas");
+                like[i].children[0].classList.add("far");
+            }
+        });
+    }
 
     let bookmark = document.getElementsByClassName("bookmark");
     for (let i=0; i<bookmark.length;i++) {
@@ -152,5 +162,6 @@ window.addEventListener('load',function () {
                 bookmark[i].children[0].classList.add("far");
             }
         });
-    }
-});
+    } };
+
+view();
